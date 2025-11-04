@@ -129,6 +129,10 @@ const buidlerConfig: HardhatUserConfig = {
     forkNetwork: '1', //Network id of the network we want to fork
   },
   networks: {
+      coverage: {
+      url: 'http://localhost:8555',
+      chainId: COVERAGE_CHAINID,
+    },
     // Custom Sepolia config for testing with existing pools (single private key)
     sepolia: {
       url: process.env.RPC_URL || "https://sepolia.infura.io/v3/YOUR_KEY",
@@ -138,11 +142,6 @@ const buidlerConfig: HardhatUserConfig = {
       chainId: 11155111,
     gasPrice: 'auto',
     },
-  // networks: {
-  //   coverage: {
-  //     url: 'http://localhost:8555',
-  //     chainId: COVERAGE_CHAINID,
-  //   },
    // Original Aave config (mnemonic-based, 20 accounts) - uncomment if needed for deployments
     // sepolia: getCommonNetworkConfig(eEthereumNetwork.sepolia, 11155111),
     kovan: getCommonNetworkConfig(eEthereumNetwork.kovan, 42),

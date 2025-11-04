@@ -136,13 +136,28 @@ async function main() {
   }]));
   console.log(`✓ ${TOKEN_SYMBOL} reserve initialized`);
   
+  // 7. Configure reserve as collateral (ENABLE BORROWING)
+  console.log(`Configuring ${TOKEN_SYMBOL} as collateral...`);
+  await waitForTx(await configurator.configureReserveAsCollateral(
+    token.address,
+    8000,  // 80% LTV (Loan-to-Value) - can borrow up to 80% of collateral value
+    8500,  // 85% Liquidation Threshold - liquidated if debt reaches 85% of collateral
+    10500  // 105% Liquidation Bonus - liquidators get 5% bonus
+  ));
+  await waitForTx(await configurator.enableBorrowingOnReserve(
+    token.address,
+    true  // Enable stable rate borrowing
+  ));
+  console.log(`✓ ${TOKEN_SYMBOL} configured as collateral`);
+  console.log('  LTV: 80% | Liquidation Threshold: 85% | Liquidation Bonus: 5%');
+  
   console.log('\n✅ Pool deployment complete!\n');
   
   // Display deployment info
   console.log('=== Deployment Info (Copy these to your .env) ===');
-  console.log('LENDING_POOL_ADDRESS=' + lendingPool.address);
-  console.log('DATA_PROVIDER_ADDRESS=' + dataProvider.address);
-  console.log('TOKEN_ADDRESS=' + token.address);
+  console.log('LOCAL_LENDING_POOL_ADDRESS=' + lendingPool.address);
+  console.log('LOCAL_DATA_PROVIDER_ADDRESS=' + dataProvider.address);
+  console.log('LOCAL_TOKEN_ADDRESS=' + token.address);
   console.log('TOKEN_NAME=' + TOKEN_NAME);
   console.log('TOKEN_SYMBOL=' + TOKEN_SYMBOL);
   console.log('TOKEN_DECIMALS=' + TOKEN_DECIMALS);
@@ -179,6 +194,12 @@ async function main() {
   const aTokenBalance = await aToken.balanceOf(user1.address);
   console.log(`  User1 a${TOKEN_SYMBOL} balance:`, ethers.utils.formatUnits(aTokenBalance, TOKEN_DECIMALS));
   
+  // Check borrowing capacity
+  const accountData = await lendingPool.getUserAccountData(user1.address);
+  console.log(`  Total Collateral (ETH): ${ethers.utils.formatEther(accountData.totalCollateralETH)}`);
+  console.log(`  Available to Borrow (ETH): ${ethers.utils.formatEther(accountData.availableBorrowsETH)}`);
+  console.log(`  💡 You can now borrow up to 80% of your collateral value!`);
+  
   // Fast forward time to simulate interest accrual
   console.log('\n⏰ Fast-forwarding 7 days...');
   await ethers.provider.send('evm_increaseTime', [604800]); // 7 days
@@ -204,6 +225,7 @@ async function main() {
   }
   
   console.log(`\n✅ All tests passed! Pool creation and ${TOKEN_SYMBOL} supply works correctly.`);
+  console.log(`\n💡 Next step: Run borrow-from-pool-configurable.ts to test borrowing!`);
 }
 
 main()
