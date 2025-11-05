@@ -35,27 +35,27 @@ export const PyraxeConfig: IAaveConfiguration = {
   MarketId: 'Pyraxe market',
   ProviderId: 1,
   ReservesConfig: {
-    AAVE: strategyAAVE,
-    BAT: strategyBAT,
-    BUSD: strategyBUSD,
-    DAI: strategyDAI,
-    ENJ: strategyENJ,
-    KNC: strategyKNC,
-    LINK: strategyLINK,
-    MANA: strategyMANA,
-    MKR: strategyMKR,
-    REN: strategyREN,
-    SNX: strategySNX,
-    SUSD: strategySUSD,
-    TUSD: strategyTUSD,
-    UNI: strategyUNI,
-    USDC: strategyUSDC,
+    // AAVE: strategyAAVE,
+    // BAT: strategyBAT,
+    // BUSD: strategyBUSD,
+    // DAI: strategyDAI,
+    // ENJ: strategyENJ,
+    // KNC: strategyKNC,
+    // LINK: strategyLINK,
+    // MANA: strategyMANA,
+    // MKR: strategyMKR,
+    // REN: strategyREN,
+    // SNX: strategySNX,
+    // SUSD: strategySUSD,
+    // TUSD: strategyTUSD,
+    // UNI: strategyUNI,
+    // USDC: strategyUSDC,
     USDT: strategyUSDT,
     WBTC: strategyWBTC,
     WETH: strategyWETH,
-    YFI: strategyYFI,
-    ZRX: strategyZRX,
-    xSUSHI: strategyXSUSHI,
+    // YFI: strategyYFI,
+    // ZRX: strategyZRX,
+    // xSUSHI: strategyXSUSHI,
   },
   ReserveAssets: {
     [eEthereumNetwork.goerli]: {},
@@ -153,10 +153,9 @@ export const PyraxeConfig: IAaveConfiguration = {
       xSUSHI: '0x8798249c2E607446EfB7Ad49eC89dD1865Ff4272',
     },
     [eEthereumNetwork.sepolia]: {
-      DAI: '0x3e622317f8C93f7328350cF0B56d9eD4C620C5d6', //
-      LINK: '0x779877A7B0D9E8603169DdbD7836e478b4624789', //
-      SUSD: '0xEE790422315c5f98FE6befCd676bB157e5B0ea74', //
-      USDC: '0x94a9D9AC8a22534E3FaCa9F4e7F2E2cf85d5E4C8', //
+      WBTC: '0x29f2D40B0605204364af54EC677bD022dA425d03', // address for wbtc on sepolia (Marto file for addresses)
+      WETH: '0xC558DBdd856501FCd9aaF1E62eae57A9F0629a3c', // address on weth on sepolia testnet (Marto file for addresses)
+      USDT: '0xaA8E23Fb1079EA71e0a56F48a2aA51851D8433D0', // address for usdt on sepolia (Marto file for addresses)
     },
   },
 };

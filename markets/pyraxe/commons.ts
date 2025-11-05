@@ -348,11 +348,8 @@ export const CommonsConfig: ICommonConfiguration = {
     },
     [eEthereumNetwork.goerli]: {},
     [eEthereumNetwork.sepolia]: {
-      DAI: '0x3e622317f8C93f7328350cF0B56d9eD4C620C5d6', //
-      LINK: '0x779877A7B0D9E8603169DdbD7836e478b4624789', //
-      SUSD: '0xEE790422315c5f98FE6befCd676bB157e5B0ea74', //
-      USDC: '0x94a9D9AC8a22534E3FaCa9F4e7F2E2cf85d5E4C8', //
-      USD: '0x694AA1769357215DE4FAC081bf1f309aDC325306', //
+      WBTC: '0xfd858c8bc5ac5e10f01018bc78471bb0dc392247', // taken from aave v2 testnet
+      USDT: '0xCB45B5c861a6468145b1720A620C38f55f736B74', // taken from aave v2 testnet
     },
   },
   ReserveAssets: {
@@ -390,7 +387,7 @@ export const CommonsConfig: ICommonConfiguration = {
     [eEthereumNetwork.main]: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
     [eEthereumNetwork.tenderly]: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
     [eEthereumNetwork.goerli]: '',
-    [eEthereumNetwork.sepolia]: '0x7b79995e5f793A07Bc00c21412e50Ecae098E7f9',
+    [eEthereumNetwork.sepolia]: '0xC558DBdd856501FCd9aaF1E62eae57A9F0629a3c', // address on weth on sepolia testnet(Marto file for addresses)
   },
   WrappedNativeToken: {
     [eEthereumNetwork.coverage]: '', // deployed in local evm
@@ -401,7 +398,7 @@ export const CommonsConfig: ICommonConfiguration = {
     [eEthereumNetwork.main]: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
     [eEthereumNetwork.tenderly]: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
     [eEthereumNetwork.goerli]: '',
-    [eEthereumNetwork.sepolia]: '0x7b79995e5f793A07Bc00c21412e50Ecae098E7f9',
+    [eEthereumNetwork.sepolia]: '0xC558DBdd856501FCd9aaF1E62eae57A9F0629a3c', // address on weth on sepolia testnet (Marto file for addresses)
   },
   ReserveFactorTreasuryAddress: {
     [eEthereumNetwork.coverage]: '0x464c71f6c2f760dda6093dcb91c24c39e5d6e18c',
@@ -423,6 +420,6 @@ export const CommonsConfig: ICommonConfiguration = {
     [eEthereumNetwork.main]: ZERO_ADDRESS,
     [eEthereumNetwork.tenderly]: ZERO_ADDRESS,
     [eEthereumNetwork.goerli]: ZERO_ADDRESS,
-    [eEthereumNetwork.sepolia]: ZERO_ADDRESS,
+    [eEthereumNetwork.sepolia]: ZERO_ADDRESS, //'0x4da5c4da71c5a167171cc839487536d86e083483', sepoliav3 aave
   },
 };

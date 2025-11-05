@@ -22,7 +22,8 @@ export const SUPPORTED_ETHERSCAN_NETWORKS = [
   'mumbai',
   'goerli',
   'avalanche',
-  'fuji',
+  'avalancheFujiTestnet',
+  'sepolia',
 ];
 
 function delay(ms: number) {
@@ -64,6 +65,7 @@ export const verifyEtherscanContract = async (
       constructorArgs: path,
       relatedSources: true,
     };
+    console.log('params', params);
     await runTaskWithRetry('verify', params, times, msDelay, cleanup);
   } catch (error) {}
 };
