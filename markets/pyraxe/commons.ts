@@ -348,8 +348,8 @@ export const CommonsConfig: ICommonConfiguration = {
     },
     [eEthereumNetwork.goerli]: {},
     [eEthereumNetwork.sepolia]: {
-      WBTC: '0xfd858c8bc5ac5e10f01018bc78471bb0dc392247', // taken from aave v2 testnet
-      USDT: '0xCB45B5c861a6468145b1720A620C38f55f736B74', // taken from aave v2 testnet
+      WBTC: '0x5fb1616F78dA7aFC9FF79e0371741a747D2a7F22',
+      USDT: '0xf652fc718F86b3470e55aeF99Ff8F9013ecB87fD',
     },
   },
   ReserveAssets: {
