@@ -14,6 +14,7 @@ interface IPythFallbackOracle {
   error InvalidPrice();
   error PriceStale();
   error InvalidAsset();
+  error InvalidAssetAddress();
 
   // ============ Events ============
   event StaleTimeUpdated(uint256 oldStaleTime, uint256 newStaleTime);

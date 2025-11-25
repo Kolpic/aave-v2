@@ -24,12 +24,18 @@ contract PythFallbackOracle is Ownable, IPythFallbackOracle {
   // Maximum allowed staleness (in seconds)
   uint256 public staleTime;
   uint256 private constant DEFAULT_STALE_TIME = 120;
+  address public immutable WETH;
+  address public immutable USDT;
+  uint256 public constant PRECISION = 1e18;
 
   // ============ Constructor ============
-  constructor(address pythAddress, uint256 initialStaleTime) Ownable() {
+  constructor(address pythAddress, uint256 initialStaleTime, address weth, address usdt) Ownable() {
     if (pythAddress == address(0)) revert InvalidPythAddress();
+    if (weth == address(0) || usdt == address(0)) revert InvalidAssetAddress();
     PYTH = AbstractPyth(pythAddress);
     staleTime = initialStaleTime;
+    WETH = weth;
+    USDT = usdt;
   }
 
   // ============ Admin Functions ============
@@ -62,6 +68,17 @@ contract PythFallbackOracle is Ownable, IPythFallbackOracle {
   }
 
   // ============ Price Functions ============
+
+  /**
+   * @dev Calculates: (Asset/USD) / (ETH/USD) to return Asset/ETH.
+   */
+  function getAssetPrice(address asset) external view returns (uint256) {
+    uint256 ethPriceInUsd = getPrice(WETH, USDT);
+
+    uint256 assetPriceInUsd = getPrice(asset, USDT);
+
+    return (assetPriceInUsd * PRECISION) / ethPriceInUsd;
+  }
 
   /**
    * @dev Gets the price of assetFrom denominated in assetTo, scaled to assetTo's decimals
