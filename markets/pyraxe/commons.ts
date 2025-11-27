@@ -52,6 +52,12 @@ export const CommonsConfig: ICommonConfiguration = {
           base: '0xaA8E23Fb1079EA71e0a56F48a2aA51851D8433D0', // USDT
           feedId: '0xc9d8b075a5c69303365ae23633d4e085199bf5c520a3b90fed1322a0342ffc33',
         },
+        {
+          symbol: 'USDT',
+          asset: '0xaA8E23Fb1079EA71e0a56F48a2aA51851D8433D0', // USDT
+          base: '0xaA8E23Fb1079EA71e0a56F48a2aA51851D8433D0', // USDT
+          feedId: '0x2b89b9dc8fdf9f34709a5b106b472f0f39bb6ca9ce04b0fd7f2e971688e2e53b',
+        },
       ],
     },
   },
