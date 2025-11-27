@@ -30,14 +30,36 @@ export const CommonsConfig: ICommonConfiguration = {
   PythOracle: {
     [eEthereumNetwork.sepolia]: {
       pythAddress: '0xDd24F84d36BF92C65F92307595335bdFab5Bbd21', // docs: 0xDd24F84d36BF92C65F92307595335bdFab5Bbd21, 0x47F2A9BDAd52d65b66287253cf5ca0D2b763b486
-      initialStaleTime: 120,
+      initialStaleTime: 31536000,
+      wethAddress: '0xC558DBdd856501FCd9aaF1E62eae57A9F0629a3c',
+      usdtAddress: '0xaA8E23Fb1079EA71e0a56F48a2aA51851D8433D0',
+      priceFeeds: [
+        {
+          symbol: 'WETH',
+          asset: '0xC558DBdd856501FCd9aaF1E62eae57A9F0629a3c', // WETH
+          base: '0xaA8E23Fb1079EA71e0a56F48a2aA51851D8433D0', // USDT
+          feedId: '0xff61491a931112ddf1bd8147cd1b641375f79f5825126d665480874634fd0ace',
+        },
+        {
+          symbol: 'LINK',
+          asset: '0xf8Fb3713D459D7C1018BD0A49D19b4C44290EBE5', // LINK
+          base: '0xaA8E23Fb1079EA71e0a56F48a2aA51851D8433D0', // USDT
+          feedId: '0x8ac0c70fff57e9aefdf5edf44b51d62c2d433653cbb2cf5cc06bb115af04d221',
+        },
+        {
+          symbol: 'WBTC',
+          asset: '0x29f2D40B0605204364af54EC677bD022dA425d03', // WBTC
+          base: '0xaA8E23Fb1079EA71e0a56F48a2aA51851D8433D0', // USDT
+          feedId: '0xc9d8b075a5c69303365ae23633d4e085199bf5c520a3b90fed1322a0342ffc33',
+        },
+      ],
     },
   },
   FeeCollector: {
     [eEthereumNetwork.sepolia]: {
-      admin: '0xB33Ab79988Bcd11Ff0E98Dd7813f0a6a4555C91C',
-      guardian: '0xB33Ab79988Bcd11Ff0E98Dd7813f0a6a4555C91C',
-      withdrawer: '0xB33Ab79988Bcd11Ff0E98Dd7813f0a6a4555C91C',
+      admin: '0x73f6EEaaCa7De62a2855f911815dd40507B1C04e',
+      guardian: '0x73f6EEaaCa7De62a2855f911815dd40507B1C04e',
+      withdrawer: '0x73f6EEaaCa7De62a2855f911815dd40507B1C04e',
     },
   },
 
@@ -350,6 +372,7 @@ export const CommonsConfig: ICommonConfiguration = {
     [eEthereumNetwork.sepolia]: {
       WBTC: '0x5fb1616F78dA7aFC9FF79e0371741a747D2a7F22',
       USDT: '0xf652fc718F86b3470e55aeF99Ff8F9013ecB87fD',
+      LINK: '0x42585eD362B3f1BCa95c640FdFf35Ef899212734',
     },
   },
   ReserveAssets: {

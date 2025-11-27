@@ -276,7 +276,7 @@ export type iAavePoolAssets<T> = Pick<
   // | 'AAVE'
   // | 'BAT'
   // | 'MKR'
-  // | 'LINK'
+  | 'LINK'
   // | 'KNC'
   | 'WBTC'
   // | 'MANA'
@@ -540,6 +540,14 @@ export interface IPythOracleParams {
   [network: string]: {
     pythAddress: tEthereumAddress;
     initialStaleTime: number;
+    wethAddress: tEthereumAddress;
+    usdtAddress: tEthereumAddress;
+    priceFeeds: Array<{
+      symbol: string;
+      asset: tEthereumAddress;
+      base: tEthereumAddress;
+      feedId: string;
+    }>;
   };
 }
 
